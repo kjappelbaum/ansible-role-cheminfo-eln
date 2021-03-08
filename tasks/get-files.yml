@@ -1,0 +1,5 @@
+- name: get roc-eln-docker
+  git:
+    repo: https://github.com/cheminfo/roc-eln-docker/tree/master/rest-on-couch
+    dest: "{{ eln_folder }}"
+    version: master

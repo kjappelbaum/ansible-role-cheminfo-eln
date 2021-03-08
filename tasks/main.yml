@@ -8,3 +8,13 @@
 - include_tasks: eln-deps-debian.yml
   tags: [eln_deps]
   when: ansible_os_family|lower == 'debian'
+
+# get files for the deployment
+- include_tasks: get-files.yml
+
+# Deploy docker compose stack
+- name: deploy Docker Compose stack
+  docker_compose:
+    project_src: "{{ eln_folder }}"
+    files:
+      - docker-compose.yml
