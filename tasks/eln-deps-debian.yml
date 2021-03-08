@@ -1,0 +1,12 @@
+- name: Install apt dependencies
+  apt:
+    name:
+      - npm
+      - nodejs
+      - git
+
+- name: install recent docker python library
+  pip:
+    name: docker
+    version: 4.2.0
+    state: present

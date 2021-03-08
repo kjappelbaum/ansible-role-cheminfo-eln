@@ -1,7 +1,7 @@
 ---
 # tasks file for eln
 
-# apt and python packages
+# system dependencies
 - include_tasks: eln-deps-rhel.yml
   tags: [eln_deps]
   when: ansible_os_family|lower == 'redhat'

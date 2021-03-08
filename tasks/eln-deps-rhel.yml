@@ -1,0 +1,28 @@
+- name: Install dependencies
+  become: true
+  become_user: "{{ root_user }}"
+  dnf:
+    name:
+      - node
+      - npm
+      - git
+      - libselinux-utils
+        # Needed to control SELinux from Ansible
+        # We instead need to do this manually as installing the selinux-policy package brings in a dependency that
+        # breaks the package manager (Failed to synchronize cache for repo 'AppStream').
+        # - selinux-policy
+
+- name: Disable SELinux
+  become: true
+  become_user: "{{ root_user }}"
+  # selinux:
+  #  state: disabled
+  shell: setenforce 0
+  changed_when: false
+  ignore_errors: true
+
+- name: install recent docker python library
+  pip:
+    name: docker
+    version: 4.2.0
+    state: present
