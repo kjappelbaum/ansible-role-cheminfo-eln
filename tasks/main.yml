@@ -1,0 +1,10 @@
+---
+# tasks file for eln
+
+# apt and python packages
+- include_tasks: eln-deps-rhel.yml
+  tags: [eln_deps]
+  when: ansible_os_family|lower == 'redhat'
+- include_tasks: eln-deps-debian.yml
+  tags: [eln_deps]
+  when: ansible_os_family|lower == 'debian'
