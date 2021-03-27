@@ -2,7 +2,7 @@ name: CI (debian)
 
 on:
   push:
-    branches: [master]
+    branches: [main]
     tags:
     - 'v*'
   pull_request:

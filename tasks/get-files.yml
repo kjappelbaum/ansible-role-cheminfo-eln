@@ -3,3 +3,18 @@
     repo: https://github.com/cheminfo/roc-eln-docker/tree/master/rest-on-couch
     dest: "{{ eln_folder }}"
     version: master
+
+- name: get visualizer config
+  ansible.builtin.unarchive::
+    src: https://github.com/cheminfo/roc-visualizer-config/archive/master.tar.gz
+    dest: "{{ eln_folder }}/rest-on-couch/home/visualizer"
+
+- name: get eln config
+  ansible.builtin.unarchive::
+    src: https://github.com/cheminfo/roc-eln-config/archive/master.tar.gz
+    dest: "{{ eln_folder }}/rest-on-couch/home/eln"
+
+- name: get printer config
+  ansible.builtin.unarchive::
+    src: https://github.com/cheminfo/roc-eln-config/archive/master.tar.gz
+    dest: "{{ eln_folder }}/rest-on-couch/home/printers"
